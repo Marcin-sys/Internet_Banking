@@ -21,9 +21,9 @@ public class AccountDAO implements IAccountDAO {
 
     private final String GET_BY_ID_HQL = "FROM pl.mirocha.marcin.internet.banking.model.Account WHERE id = :id";
     private final String GET_ALL_HQL = "FROM pl.mirocha.marcin.internet.banking.model.Account";
-    private final String GET_ACCOUNTS_BY_USER_ID_HQL = "FROM pl.mirocha.marcin.it.book.store.model.User " +
+    private final String GET_ACCOUNTS_BY_USER_ID_HQL = "FROM pl.mirocha.marcin.internet.banking.model.User " +
             "WHERE id = :id";
-    private final String GET_ACCOUNTS_BY_ACCOUNT_NUMBER_HQL = "FROM pl.mirocha.marcin.it.book.store.model.Account " +
+    private final String GET_ACCOUNTS_BY_ACCOUNT_NUMBER_HQL = "FROM pl.mirocha.marcin.internet.banking.model.Account " +
             "WHERE accountNumber = :accountNumber";
 
     public AccountDAO(SessionFactory sessionFactory) {
