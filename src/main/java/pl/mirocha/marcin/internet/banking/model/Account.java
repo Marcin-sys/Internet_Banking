@@ -18,8 +18,8 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(unique = true)
-    private long accountNumber;
-    private int accountBalance;
+    private String accountNumber;
+    private double accountBalance;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
     private User user;
     @OneToMany(fetch = FetchType.EAGER)
