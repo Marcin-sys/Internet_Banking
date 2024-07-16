@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<th:block th:fragment="headers">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/commons.css">
+</th:block>
+
+
+<body>
+<div th:replace="~{fragments.html :: logo}"></div>
+<div th:replace="~{fragments.html :: menu}"></div>
+
+<div id="content">
+    <p> Banking is all we do  </p>
+    <p> ul. cosik makocik 21 </p>
+    <p> Krakow  </p>
+    <p> tel: 415 875 587   </p>
+</div>
+
+
+</body>
+</html>

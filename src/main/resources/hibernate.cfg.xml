@@ -12,7 +12,7 @@
         <property name="connection.password"></property>
 
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="hibernate.connection.pool_size">10</property>
 
         <mapping class="pl.mirocha.marcin.internet.banking.model.Account"/>
