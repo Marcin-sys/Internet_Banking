@@ -18,10 +18,10 @@
 </div>
 
 <div id="menu" th:fragment="menu">
-    <a href="/main" class="button">Strona Główna</a>
-    <a href="/contact" class="button">Kontakt</a>
-    <a href="/login" class="button" th:if="${session.user == null}">Zaloguj</a>
-    <a href="/logout" class="button" th:if="${session.user != null}">Wyloguj</a>
+    <a href="/main" class="button">Main site</a>
+    <a href="/contact" class="button">Contact</a>
+    <a href="/login" class="button" th:if="${session.user == null}">Login</a>
+    <a href="/logout" class="button" th:if="${session.user != null}">Logout</a>
 
 </div>
 </body>
