@@ -19,6 +19,7 @@ public class Account {
     private int id;
     @Column(unique = true)
     private String accountNumber;
+    private String accountCurrency;
     private double accountBalance;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
     private User user;
@@ -27,5 +28,6 @@ public class Account {
 
     public Account(int id) {
         this.id = id;
+        //TODO random accountNumber
     }
 }
