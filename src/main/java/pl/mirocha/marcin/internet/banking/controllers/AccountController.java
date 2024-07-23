@@ -10,6 +10,9 @@ import pl.mirocha.marcin.internet.banking.model.Account;
 import pl.mirocha.marcin.internet.banking.services.IAccountService;
 import pl.mirocha.marcin.internet.banking.validators.AccountValidator;
 
+import java.security.SecureRandom;
+import java.time.Instant;
+
 @Controller
 @RequestMapping(path = "/account")
 public class AccountController {
@@ -31,8 +34,22 @@ public class AccountController {
         try {
             AccountValidator.validateAccount(account);
         }catch (AccountValidationException e){
+            //TODO ADD POPUP frontend
             return "redirect:/account/add";
         }
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder(26);
+
+        long timestamp = Instant.now().toEpochMilli();
+        sb.append(String.format("%013d", timestamp));
+
+        for (int i = 0; i < 13; i++) {
+            sb.append(random.nextInt(10));
+        }
+        String accountNumber = sb.toString();
+        account.setAccountNumber(accountNumber);
+        System.out.println("Account number has been made its " + accountNumber);
+
         accountService.persist(account);
         return "redirect:/main";
     }

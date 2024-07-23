@@ -9,5 +9,9 @@
 <div th:replace="~{fragments.html :: logo}"></div>
 <div th:replace="~{fragments.html :: menu}"></div>
 
+<div>
+    <a th:href="@{/account/add}"  th:if="${session.user != null}">Add new Account</a>
+</div>
+
 </body>
 </html>

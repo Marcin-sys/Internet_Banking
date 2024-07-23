@@ -29,7 +29,7 @@ public class AccountService implements IAccountService {
     @Override
     public void persist(Account account) {
         account.setUser((User) this.httpSession.getAttribute("user"));
-        this.accountDAO.persist(account); //TODO check if it work
+        this.accountDAO.persist(account);
     }
 
     @Override
