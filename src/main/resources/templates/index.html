@@ -11,12 +11,12 @@
 <div th:replace="~{fragments.html :: menu}"></div>
 
 <div id="content">
-    <div class="account" th:each="account : ${accounts}">
+    <a th:href="@{/account/add}"  th:if="${session.user != null}">Add new Account</a>
+    <div class="account" th:each="account : ${accounts}" th:if="${session.user != null}">
         <div th:text="${account.accountNumber}" class="accountNumber"></div>
         <div th:text="${'Account currency ' + account.accountCurrency}" class="accountCurrency"></div>
         <div th:text="${'Amount in account: ' + account.accountBalance}" class="accountBalance"></div>
     </div>
-    <a th:href="@{/account/add}"  th:if="${session.user != null}">Add new Account</a>
 </div>
 </body>
 </html>

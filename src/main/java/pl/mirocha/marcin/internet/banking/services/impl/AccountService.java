@@ -47,4 +47,10 @@ public class AccountService implements IAccountService {
     public List<Account> getAll() {
         return this.accountDAO.getAll();
     }
+
+    @Override
+    public List<Account> getByCurrentUser() {
+        User user = (User) this.httpSession.getAttribute("user");
+        return this.accountDAO.getByUserId(user.getId());
+    }
 }

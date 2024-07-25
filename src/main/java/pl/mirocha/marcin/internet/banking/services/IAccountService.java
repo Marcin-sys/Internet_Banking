@@ -15,6 +15,7 @@ public interface IAccountService {
 
     List<Account> getAll();
 
+    List<Account> getByCurrentUser();
 
 
 }
