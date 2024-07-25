@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <th:block th:replace="~{fragments.html :: headers}"></th:block>
+    <link rel="stylesheet" href="/account.css">
 </head>
 
 <body>
@@ -9,9 +10,13 @@
 <div th:replace="~{fragments.html :: logo}"></div>
 <div th:replace="~{fragments.html :: menu}"></div>
 
-<div>
+<div id="content">
+    <div class="account" th:each="account : ${accounts}">
+        <div th:text="${account.accountNumber}" class="accountNumber"></div>
+        <div th:text="${'Account currency ' + account.accountCurrency}" class="accountCurrency"></div>
+        <div th:text="${'Amount in account: ' + account.accountBalance}" class="accountBalance"></div>
+    </div>
     <a th:href="@{/account/add}"  th:if="${session.user != null}">Add new Account</a>
 </div>
-
 </body>
 </html>
