@@ -34,12 +34,20 @@ public class AccountService implements IAccountService {
 
     @Override
     public Optional<Account> getById(int id) {
+/*//TODO hmm? user? hmm ?
+        final User user = (User) this.httpSession.getAttribute("user");
+        user.getAccounts().stream()
+                .filter(p -> p.getId() == id)
+                .findFirst()
+                .get();*/
+
         return this.accountDAO.getById(id);
     }
 
     @Override
-    public void update(int id, Account account) {
+    public void donateBalance(int id, Account account, double accountBalance) {
         account.setId(id);
+        account.setAccountBalance(account.getAccountBalance()+accountBalance);
         this.accountDAO.persist(account); //TODO  update ?
     }
 

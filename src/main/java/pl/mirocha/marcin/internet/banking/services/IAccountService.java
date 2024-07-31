@@ -11,7 +11,7 @@ public interface IAccountService {
 
     Optional<Account> getById(int id);
 
-    void update(int id, Account account);
+    void donateBalance(int id, Account account, double accountBalance);
 
     List<Account> getAll();
 

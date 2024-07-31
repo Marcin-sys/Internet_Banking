@@ -2,9 +2,7 @@ package pl.mirocha.marcin.internet.banking.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import pl.mirocha.marcin.internet.banking.exceptions.AccountValidationException;
 import pl.mirocha.marcin.internet.banking.model.Account;
 import pl.mirocha.marcin.internet.banking.services.IAccountService;
@@ -12,6 +10,7 @@ import pl.mirocha.marcin.internet.banking.validators.AccountValidator;
 
 import java.security.SecureRandom;
 import java.time.Instant;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/account")
@@ -54,5 +53,24 @@ public class AccountController {
         return "redirect:/main";
     }
 
-    //TODO update ?
+
+    @RequestMapping(path = "/donate/{id}",method = RequestMethod.GET)
+    public String donate(@PathVariable int id, Model model){
+        Optional<Account> accountBox = this.accountService.getById(id);
+        if (accountBox.isEmpty()){
+            return "redirect:/main";
+        }
+        model.addAttribute("accountModel", accountBox.get());
+        return "donate-form";
+    }
+
+    @RequestMapping(path = "/donate/{id}",method = RequestMethod.POST)
+    public String donate(@PathVariable int id, @ModelAttribute Account account,
+                         @RequestParam double accountBalance) { //TODO ??? account
+        System.out.println("jestem tutaj");
+        System.out.println("mam " + id + account + accountBalance );
+        this.accountService.donateBalance(id,account,accountBalance);  // nie moge nulla wrzucic
+        System.out.println("zrobilem");
+        return "redirect:/main";
+    }
 }
