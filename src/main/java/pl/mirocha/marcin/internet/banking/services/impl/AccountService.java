@@ -34,21 +34,27 @@ public class AccountService implements IAccountService {
 
     @Override
     public Optional<Account> getById(int id) {
-/*//TODO hmm? user? hmm ?
-        final User user = (User) this.httpSession.getAttribute("user");
-        user.getAccounts().stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .get();*/
-
         return this.accountDAO.getById(id);
     }
 
     @Override
-    public void donateBalance(int id, Account account, double accountBalance) {
+    public void donateBalance(int id, Account account) {
         account.setId(id);
-        account.setAccountBalance(account.getAccountBalance()+accountBalance);
-        this.accountDAO.persist(account); //TODO  update ?
+
+        double previousAccountBalance = 0;
+        Optional<Account> oldAccount = getById(account.getId());
+        if (oldAccount.isPresent()) {
+            previousAccountBalance = oldAccount.get().getAccountBalance();
+            System.out.println("pobralem wczesniejsze pieniadze wynoszace: " + previousAccountBalance);
+        }else {
+            return;
+        }
+        account.setUser((User) this.httpSession.getAttribute("user"));
+        account.setAccountNumber(oldAccount.get().getAccountNumber());
+        account.setAccountCurrency(oldAccount.get().getAccountCurrency());
+        account.setAccountBalance(account.getAccountBalance() + previousAccountBalance);
+
+        this.accountDAO.persist(account);
     }
 
     @Override

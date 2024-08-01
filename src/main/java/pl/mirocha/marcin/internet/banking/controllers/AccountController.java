@@ -65,12 +65,9 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/donate/{id}",method = RequestMethod.POST)
-    public String donate(@PathVariable int id, @ModelAttribute Account account,
-                         @RequestParam double accountBalance) { //TODO ??? account
-        System.out.println("jestem tutaj");
-        System.out.println("mam " + id + account + accountBalance );
-        this.accountService.donateBalance(id,account,accountBalance);  // nie moge nulla wrzucic
-        System.out.println("zrobilem");
+    public String donate(@PathVariable int id, @ModelAttribute Account account) {
+        this.accountService.donateBalance(id,account);
+
         return "redirect:/main";
     }
 }
