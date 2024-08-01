@@ -1,7 +1,6 @@
 package pl.mirocha.marcin.internet.banking.controllers;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +26,6 @@ public class CommonController {
         return "index";
     }
 
-    /*     return "redirect:/main";   */
     @RequestMapping(path = "/contact", method = RequestMethod.GET)
     public String contact() {
         return "contact";
