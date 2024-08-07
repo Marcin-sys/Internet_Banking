@@ -70,4 +70,25 @@ public class AccountController {
 
         return "redirect:/main";
     }
+
+    @RequestMapping(path = "/transfer/{id}",method = RequestMethod.GET)
+    public String transfer(@PathVariable int id,
+                           Model model ){  //TODO Do i need accountNumberForTransfer ?  param?
+        Optional<Account> accountBox = this.accountService.getById(id);
+        if (accountBox.isEmpty()){
+            return "redirect:/main";
+        }
+        model.addAttribute("accountModel", accountBox.get());
+        return "account-transfer-form";
+    }
+
+    @RequestMapping(path = "/transfer/{id}",method = RequestMethod.POST)
+    public String transfer(@PathVariable int id,
+                           @ModelAttribute Account account,
+                           @RequestParam String accountNumberForTransfer) {
+        //TODO here code for method
+
+
+        return "redirect:/main";
+    }
 }

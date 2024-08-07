@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="~{fragments.html :: headers}"></th:block>
+    <script src="/account-transfer.js"></script>
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments.html :: logo}"></div>
+<div th:replace="~{fragments.html :: menu}"></div>
+
+<div id="content">
+    <form method="post" onsubmit="return validate()">
+        <input type="text" placeholder="Write here account number that you wanna transfer to"
+               name="accountNumberForTransfer"
+               class="input-field"
+               id="accountNumberForTransfer">
+        <input type="text" placeholder="How much money do you want to transfer?"
+               class="input-field"
+               th:field="*{accountModel.accountBalance}" id="accountBalance">
+        <p id="info"></p>
+        <input type="submit" value="Submit transfer" class="button">
+    </form>
+</div>
+
+</body>
+</html>

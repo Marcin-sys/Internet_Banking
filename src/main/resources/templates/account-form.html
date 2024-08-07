@@ -12,7 +12,8 @@
 
 <div id="content">
     <form method="post" onsubmit="return validate()">
-        <input type="text" placeholder="Write here Currency for Account" class="input-field"
+        <input type="text" placeholder="Write here Currency for Account"
+               class="input-field"
                th:field="*{accountModel.accountCurrency}" id="accountCurrency">
         <p id="info"></p>
         <input type="submit" value="Submit & Create" class="button">

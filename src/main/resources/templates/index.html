@@ -16,7 +16,10 @@
         <div th:text="${account.accountNumber}" class="accountNumber"></div>
         <div th:text="${'Account currency ' + account.accountCurrency}" class="accountCurrency"></div>
         <div th:text="${'Amount in account: ' + account.accountBalance}" class="accountBalance"></div>
-        <a th:href="@{/account/donate/{id}(id=${account.id})}" th:if="${session.user != null}">Top up your account</a>
+        <a th:href="@{/account/donate/{id}(id=${account.id})}"
+           th:if="${session.user != null}">Top up your account</a>
+        <a th:href="@{/account/transfer/{id}(id=${account.id})}"
+           th:if="${session.user != null}">Transfer money to another account</a>
     </div>
 </div>
 </body>
