@@ -50,14 +50,32 @@ public class TransferDAO implements ITransferDAO {
         return result;
     }
 
+    /*    @Override
+        public void persist(Transfer transfer) {
+            Session session = this.sessionFactory.openSession();
+            try {
+                session.refresh(transfer.getUser());
+                transfer.getUser().getTransfers().add(transfer);
+                session.beginTransaction();
+                session.merge(transfer);
+                session.getTransaction().commit();
+            } catch (HibernateException e) {
+                session.getTransaction().rollback();
+            } finally {
+                session.close();
+            }
+        }*/
     @Override
     public void persist(Transfer transfer) {
         Session session = this.sessionFactory.openSession();
         try {
-            session.refresh(transfer.getUser());
-            transfer.getUser().getTransfers().add(transfer);
             session.beginTransaction();
-            session.merge(transfer);
+            User user = transfer.getUser();//TODO
+            if (!user.getTransfers().contains(transfer)) {
+                user.getTransfers().add(transfer);
+                transfer.setUser(user);
+                session.merge(transfer);
+            }
             session.getTransaction().commit();
         } catch (HibernateException e) {
             session.getTransaction().rollback();
@@ -65,6 +83,7 @@ public class TransferDAO implements ITransferDAO {
             session.close();
         }
     }
+
 
     @Override
     public void delete(int id) {

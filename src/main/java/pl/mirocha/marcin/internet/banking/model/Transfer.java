@@ -19,18 +19,26 @@ public class Transfer {
     private LocalDateTime dateTime;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private int amountOfMoney;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
+    private double amountOfMoney;  //TODO change int to double in database
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     private User user;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     private Account accountSender;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     private Account accountReceiver;
 
     public Transfer(int id) {
         this.id = id;
     }
+    public Transfer(double amountOfMoney, User user, Account accountSender,
+                    Account accountReceiver) {
+        this.status = Status.NEW;
+        this.amountOfMoney = amountOfMoney;
+        this.user = user;
+        this.accountSender = accountSender;
+        this.accountReceiver = accountReceiver;
 
+    }
     public enum Status{
         NEW,
         DONE

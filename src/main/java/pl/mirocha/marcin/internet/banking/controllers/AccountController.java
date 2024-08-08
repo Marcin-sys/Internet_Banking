@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.mirocha.marcin.internet.banking.exceptions.AccountValidationException;
 import pl.mirocha.marcin.internet.banking.model.Account;
 import pl.mirocha.marcin.internet.banking.services.IAccountService;
+import pl.mirocha.marcin.internet.banking.services.ITransferService;
 import pl.mirocha.marcin.internet.banking.validators.AccountValidator;
 
 import java.security.SecureRandom;
@@ -17,9 +18,11 @@ import java.util.Optional;
 public class AccountController {
 
     private final IAccountService accountService;
+    private final ITransferService transferService;
 
-    public AccountController(IAccountService accountService) {
+    public AccountController(IAccountService accountService, ITransferService transferService) {
         this.accountService = accountService;
+        this.transferService = transferService;
     }
 
     @RequestMapping(path = "/add",method = RequestMethod.GET)
@@ -72,22 +75,17 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/transfer/{id}",method = RequestMethod.GET)
-    public String transfer(@PathVariable int id,
-                           Model model ){  //TODO Do i need accountNumberForTransfer ?  param?
-        Optional<Account> accountBox = this.accountService.getById(id);
-        if (accountBox.isEmpty()){
-            return "redirect:/main";
-        }
-        model.addAttribute("accountModel", accountBox.get());
+    public String transfer(@PathVariable int id){  //TODO Do i need accountNumberForTransfer ?  param?
+
         return "account-transfer-form";
     }
 
     @RequestMapping(path = "/transfer/{id}",method = RequestMethod.POST)
     public String transfer(@PathVariable int id,
-                           @ModelAttribute Account account,
+                           @RequestParam double amountOfMoneyToTransfer,
                            @RequestParam String accountNumberForTransfer) {
         //TODO here code for method
-
+        this.transferService.transferMoney(id,amountOfMoneyToTransfer,accountNumberForTransfer);
 
         return "redirect:/main";
     }

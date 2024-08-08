@@ -10,7 +10,7 @@ public interface IAccountDAO {
 
     List<Account> getAll();
 
-    Optional<Account> getByAccountNumber(long accountNumber);
+    Optional<Account> getByAccountNumber(String accountNumber);
 
     List<Account> getByUserId(int userId);
 

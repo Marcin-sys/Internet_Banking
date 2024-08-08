@@ -1,7 +1,7 @@
 function validate() {
     alert("starting validation of donate in account");
     var accountNumber = document.getElementById("accountNumber")
-    var accountBalance = document.getElementById("accountBalance");
+    var amountOfMoneyToTransfer = document.getElementById("amountOfMoneyToTransfer");
 
     var accountNumberRegex = /^\d{26}$/;
     var transferMoneyRegex = /^-?(?!0(?:\.0{1,2})?$)(?:\d{1,6}(?:\.\d{1,2})?|\.\d{1,2})$/;
@@ -13,7 +13,7 @@ function validate() {
         infoText = infoText + "Incorrect account number, need to be 26 digits. <br>"
     }
 
-    if(!transferMoneyRegex.test(accountBalance.value)){
+    if(!transferMoneyRegex.test(amountOfMoneyToTransfer.value)){
         infoText = infoText + "Incorrect number input, check if your input meets requirements: <br> " +
         "1. Is not zero <br>" +
         "2. Has up to 2 decimal places <br>" +
