@@ -75,8 +75,7 @@ public class AccountController {
     }
 
     @RequestMapping(path = "/transfer/{id}",method = RequestMethod.GET)
-    public String transfer(@PathVariable int id){  //TODO Do i need accountNumberForTransfer ?  param?
-
+    public String transfer(@PathVariable int id){
         return "account-transfer-form";
     }
 
@@ -84,7 +83,6 @@ public class AccountController {
     public String transfer(@PathVariable int id,
                            @RequestParam double amountOfMoneyToTransfer,
                            @RequestParam String accountNumberForTransfer) {
-        //TODO here code for method
         this.transferService.transferMoney(id,amountOfMoneyToTransfer,accountNumberForTransfer);
 
         return "redirect:/main";

@@ -83,7 +83,7 @@ public class AccountDAO implements IAccountDAO {
         }
     }
 
-/*    @Override
+    @Override
     public void persist(Account account) {
         Session session = this.sessionFactory.openSession();
         try {
@@ -97,26 +97,8 @@ public class AccountDAO implements IAccountDAO {
         } finally {
             session.close();
         }
-    }*/
-
-    @Override
-    public void persist(Account account) {
-        Session session = this.sessionFactory.openSession();
-        try {
-            session.beginTransaction();
-            User user = account.getUser();
-            if (!user.getAccounts().contains(account)) {  //TODO do i have it?
-                user.getAccounts().add(account);
-                account.setUser(user);
-                session.merge(account);
-            }
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            session.getTransaction().rollback();
-        } finally {
-            session.close();
-        }
     }
+
 
     @Override
     public void delete(int id) {

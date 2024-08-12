@@ -19,7 +19,7 @@ public class Transfer {
     private LocalDateTime dateTime;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private double amountOfMoney;  //TODO change int to double in database
+    private double amountOfMoney;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
     private User user;
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
