@@ -19,7 +19,7 @@ public class CommonController {
     @RequestMapping(path = {"/main", "/", "/index"}, method = RequestMethod.GET)
     public String main(Model model, HttpSession httpSession) {
 
-        if(httpSession.getAttribute("user") != null) {
+        if (httpSession.getAttribute("user") != null) {
             model.addAttribute("accounts",
                     this.accountService.getByCurrentUser());
         }

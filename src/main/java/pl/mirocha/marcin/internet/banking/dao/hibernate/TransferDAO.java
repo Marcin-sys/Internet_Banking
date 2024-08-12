@@ -50,21 +50,21 @@ public class TransferDAO implements ITransferDAO {
         return result;
     }
 
-        @Override
-        public void persist(Transfer transfer) {
-            Session session = this.sessionFactory.openSession();
-            try {
-                session.refresh(transfer.getUser());
-                transfer.getUser().getTransfers().add(transfer);
-                session.beginTransaction();
-                session.merge(transfer);
-                session.getTransaction().commit();
-            } catch (HibernateException e) {
-                session.getTransaction().rollback();
-            } finally {
-                session.close();
-            }
+    @Override
+    public void persist(Transfer transfer) {
+        Session session = this.sessionFactory.openSession();
+        try {
+            session.refresh(transfer.getUser());
+            transfer.getUser().getTransfers().add(transfer);
+            session.beginTransaction();
+            session.merge(transfer);
+            session.getTransaction().commit();
+        } catch (HibernateException e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
+    }
 
 
     @Override

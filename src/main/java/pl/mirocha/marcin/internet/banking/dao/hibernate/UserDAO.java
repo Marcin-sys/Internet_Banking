@@ -11,6 +11,7 @@ import pl.mirocha.marcin.internet.banking.model.User;
 
 import java.util.List;
 import java.util.Optional;
+
 @Repository
 public class UserDAO implements IUserDAO {
     private final SessionFactory sessionFactory;

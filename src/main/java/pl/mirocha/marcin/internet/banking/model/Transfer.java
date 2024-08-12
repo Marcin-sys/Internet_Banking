@@ -20,16 +20,17 @@ public class Transfer {
     @Enumerated(EnumType.STRING)
     private Status status;
     private double amountOfMoney;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private User user;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Account accountSender;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private Account accountReceiver;
 
     public Transfer(int id) {
         this.id = id;
     }
+
     public Transfer(double amountOfMoney, User user, Account accountSender,
                     Account accountReceiver) {
         this.status = Status.NEW;
@@ -39,7 +40,8 @@ public class Transfer {
         this.accountReceiver = accountReceiver;
 
     }
-    public enum Status{
+
+    public enum Status {
         NEW,
         DONE
     }

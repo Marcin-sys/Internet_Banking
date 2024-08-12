@@ -7,12 +7,13 @@ public class AccountValidator {
 
     public static void validateCurrency(String currency) {
         switch (currency.toLowerCase()) {
-            case "euro", "dollar", "zloty" -> {}
+            case "euro", "dollar", "zloty" -> {
+            }
             default -> throw new AccountValidationException("Incorrect Currency");
         }
     }
 
-    public static void validateAccount(Account account){
+    public static void validateAccount(Account account) {
         validateCurrency(account.getAccountCurrency());
     }
 }

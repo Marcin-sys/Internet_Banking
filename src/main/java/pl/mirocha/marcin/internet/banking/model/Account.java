@@ -21,7 +21,7 @@ public class Account {
     private String accountNumber;
     private String accountCurrency;
     private double accountBalance;
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private User user;
     @OneToMany(fetch = FetchType.LAZY)
     private Set<Transfer> transfers = new HashSet<>();

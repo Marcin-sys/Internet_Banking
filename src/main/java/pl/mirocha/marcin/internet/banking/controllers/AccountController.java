@@ -25,17 +25,17 @@ public class AccountController {
         this.transferService = transferService;
     }
 
-    @RequestMapping(path = "/add",method = RequestMethod.GET)
-    public String add(Model model){
+    @RequestMapping(path = "/add", method = RequestMethod.GET)
+    public String add(Model model) {
         model.addAttribute("accountModel", new Account());
         return "account-form";
     }
 
-    @RequestMapping(path = "/add",method = RequestMethod.POST)
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String add(@ModelAttribute Account account) {
         try {
             AccountValidator.validateAccount(account);
-        }catch (AccountValidationException e){
+        } catch (AccountValidationException e) {
             //TODO ADD POPUP frontend
             return "redirect:/account/add";
         }
@@ -57,33 +57,33 @@ public class AccountController {
     }
 
 
-    @RequestMapping(path = "/donate/{id}",method = RequestMethod.GET)
-    public String donate(@PathVariable int id, Model model){
+    @RequestMapping(path = "/donate/{id}", method = RequestMethod.GET)
+    public String donate(@PathVariable int id, Model model) {
         Optional<Account> accountBox = this.accountService.getById(id);
-        if (accountBox.isEmpty()){
+        if (accountBox.isEmpty()) {
             return "redirect:/main";
         }
         model.addAttribute("accountModel", accountBox.get());
         return "donate-form";
     }
 
-    @RequestMapping(path = "/donate/{id}",method = RequestMethod.POST)
+    @RequestMapping(path = "/donate/{id}", method = RequestMethod.POST)
     public String donate(@PathVariable int id, @ModelAttribute Account account) {
-        this.accountService.donateBalance(id,account);
+        this.accountService.donateBalance(id, account);
 
         return "redirect:/main";
     }
 
-    @RequestMapping(path = "/transfer/{id}",method = RequestMethod.GET)
-    public String transfer(@PathVariable int id){
+    @RequestMapping(path = "/transfer/{id}", method = RequestMethod.GET)
+    public String transfer(@PathVariable int id) {
         return "account-transfer-form";
     }
 
-    @RequestMapping(path = "/transfer/{id}",method = RequestMethod.POST)
+    @RequestMapping(path = "/transfer/{id}", method = RequestMethod.POST)
     public String transfer(@PathVariable int id,
                            @RequestParam double amountOfMoneyToTransfer,
                            @RequestParam String accountNumberForTransfer) {
-        this.transferService.transferMoney(id,amountOfMoneyToTransfer,accountNumberForTransfer);
+        this.transferService.transferMoney(id, amountOfMoneyToTransfer, accountNumberForTransfer);
 
         return "redirect:/main";
     }

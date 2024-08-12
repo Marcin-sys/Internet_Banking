@@ -12,6 +12,7 @@ import pl.mirocha.marcin.internet.banking.exceptions.UserValidationException;
 import pl.mirocha.marcin.internet.banking.model.dto.RegisterUserDTO;
 import pl.mirocha.marcin.internet.banking.services.IAuthenticationService;
 import pl.mirocha.marcin.internet.banking.validators.UserValidator;
+
 @Controller
 public class AuthenticationController {
 
@@ -36,7 +37,7 @@ public class AuthenticationController {
             return "redirect:/login";
         }
         this.authenticationService.login(login, password);
-        if(httpSession.getAttribute("user") != null) {
+        if (httpSession.getAttribute("user") != null) {
             return "redirect:/main";
         }
         return "redirect:/login";
@@ -65,7 +66,6 @@ public class AuthenticationController {
         }
         return "redirect:/main";
     }
-
 
 
 }
