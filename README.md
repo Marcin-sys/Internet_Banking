@@ -1,5 +1,5 @@
 # Bankowość Internetowa 
-Opis projektu  
+Opis projektu   
 Ten projekt to aplikacja webowa bankowości online, 
 która umożliwia użytkownikom przeglądanie i dodawanie kont bankowych, jak również
 przysłanie pieniędzy pomiędzy kontami bankowymi. 
