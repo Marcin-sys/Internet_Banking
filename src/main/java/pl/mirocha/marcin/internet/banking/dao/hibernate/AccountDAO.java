@@ -36,7 +36,6 @@ public class AccountDAO implements IAccountDAO {
         Query<Account> query = session.createQuery(GET_BY_ID_HQL, Account.class);
         query.setParameter("id", id);
         try {
-            System.out.println("pobieram account");
             return Optional.of(query.getSingleResult());
         } catch (NoResultException e) {
             return Optional.empty();

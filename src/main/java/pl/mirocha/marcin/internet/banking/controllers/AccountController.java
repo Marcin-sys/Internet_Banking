@@ -36,7 +36,6 @@ public class AccountController {
         try {
             AccountValidator.validateAccount(account);
         } catch (AccountValidationException e) {
-            //TODO ADD POPUP frontend
             return "redirect:/account/add";
         }
         SecureRandom random = new SecureRandom();

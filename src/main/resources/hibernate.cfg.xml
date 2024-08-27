@@ -18,6 +18,7 @@
         <mapping class="pl.mirocha.marcin.internet.banking.model.Account"/>
         <mapping class="pl.mirocha.marcin.internet.banking.model.Transfer"/>
         <mapping class="pl.mirocha.marcin.internet.banking.model.User"/>
+        <mapping class="pl.mirocha.marcin.internet.banking.model.Currency"/>
 
     </session-factory>
 </hibernate-configuration>

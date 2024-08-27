@@ -45,7 +45,6 @@ public class AccountService implements IAccountService {
         Optional<Account> oldAccount = getById(account.getId());
         if (oldAccount.isPresent()) {
             previousAccountBalance = oldAccount.get().getAccountBalance();
-            System.out.println("pobralem wczesniejsze pieniadze wynoszace: " + previousAccountBalance);
         }else {
             return;
         }
