@@ -1,5 +1,5 @@
 # Internet Banking
-Project Description
+Project Description  
 This project is an online banking web application
 that allows users to view and add bank accounts, as well as
 transfer money between bank accounts.
