@@ -1,25 +1,25 @@
-# Bankowość Internetowa 
-Opis projektu   
-Ten projekt to aplikacja webowa bankowości online, 
-która umożliwia użytkownikom przeglądanie i dodawanie kont bankowych, jak również
-przysłanie pieniędzy pomiędzy kontami bankowymi. 
-Aplikacja została zbudowana przy użyciu Spring Framework i Hibernate, 
-z frontendem i backendem napisanym w Javie. Projekt wykorzystuje 
-REST API do komunikacji między frontendem a backendem.
+# Internet Banking
+Project Description
+This project is an online banking web application
+that allows users to view and add bank accounts, as well as
+transfer money between bank accounts.
+The application was built using the Spring Framework and Hibernate,
+with frontend and backend written in Java. The project uses
+REST API for communication between the frontend and backend.
 
-## Funkcjonalności 👍
+## Features  👍
 
-- Przeglądanie konta bankowego
-- Dodawanie nowych kont bankowych
-- Zasilanie konta bankowego
-- Przesyłaniem pieniędzy pomiędzy kontami bankowymi z uwzględnieniem przewalutowania
+- Viewing bank account
+- Adding new bank accounts
+- Depositing funds into bank account
+- Transferring money between bank accounts with currency conversion
 
-## Technologie 🚀
+## Technologies  🚀
 
 - Java
 - Spring Framework
 - Hibernate
 - REST API
 - HTML/CSS/JavaScript (Frontend)
-- JUnit i Mockito (Testy)
-- Maven (Zarządzanie zależnościami)
+- JUnit i Mockito (Testing)
+- Maven (Dependency  Management)
